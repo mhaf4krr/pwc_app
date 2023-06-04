@@ -1,0 +1,19 @@
+.wrapper {
+    background-color: rgb(255, 200, 0);
+    color:black;
+    width: fit-content;
+    padding:0.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
+.wrapper_subheader {
+  
+    color:rgb(157, 157, 157);
+    width: fit-content;
+    padding:0.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
