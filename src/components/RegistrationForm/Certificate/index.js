@@ -5,7 +5,12 @@ import * as Yup from "yup";
 import { Table, Form, Row, Col, Button } from "react-bootstrap";
 
 import { Trash3Fill } from "react-bootstrap-icons";
+
+import { useTranslation } from "react-i18next";
+
 export default function CertificateSection({ parentFormik }) {
+  const { t } = useTranslation();
+
   //ADDS THE USER CERTIFICATE
 
   function addUserToExisting(user_value) {

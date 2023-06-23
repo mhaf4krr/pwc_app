@@ -1,0 +1,69 @@
+{
+   
+        "section_label1":"GENERAL INFORMATION",
+        "general_information":{
+            "type":"Type of Respondent / Beneficiary",
+            "name":"Name of the Respondent",
+            "date":"Date of Firm/Business Registration",
+            "shg":"Name of the linked SHG",
+            "vo":"Name of the linked SHG",
+            "clf":"Name of the CLF",
+            "pg_clf":"Name of the PG / CLF",
+            "contact":"Contact Number",
+            "alt_number":"Alternate Number",
+            "email":"Email Address (if available)",
+            "division":"Division",
+            "district":"District",
+            "block":"Block",
+            "address":"Complete Address"
+
+        },
+
+
+        "section_label2":"VALUE ADDITION OF BUSINESS",
+        "val_add":{
+            "status":"Business Registration Status",
+            "type":"Business Registration Type",
+            "date":"Business Registration Date (if applicable)",
+            "full_time_emp":"No. of Full Time Employees (as on date)",
+            "part_time_emp":"No. of Part Time Employees (as on date)",
+            "business_cert_label":"BUSINESS CERTIFICATES (AVAILABLE / REQUIRED)",
+            "est_cert":"ESTABLISHMENT CERTIFICATE",
+            "msme_reg":"MSME REGISTRATION",
+            "gst_cert":"GST CERTIFICATE",
+            "fssai_cert":"FSSAI CERTIFICATE",
+            "imp_exp_cert":"IMPORT EXPORT CODE (IEC)",
+            "sales_info_label":"SALES INFORMATION",
+            "total_sales_fy":"Total sales of FY 2022-2023 (including all sales channels)",
+            "total_sales_last_quater":"Total sales in last quater (FY 1st Quater)",
+            "top_sku_info":"TOP SKU INFORMATION"
+        },
+
+        "section_label3":"PRODUCT DEVELOPMENT STATUS",
+        "prod_dev":{
+            "brand_name":"Brand Name of Product (if any)",
+            "specify_brand_name":"If YES, specify the Brand Name",
+            "logo":"Logos for the Business (if any)",
+            "support_logo_dev":"Need Support for Logo creation/development",
+            "support_req_prod_label":"SUPPORT REQUIRED FOR PRODUCT DEVELOPMENT",
+            "values":{
+                "tech_input":"TECHNICAL INPUT / KNOWLEDGE",
+                "packaging_material":"PACKAGING MATERIAL",
+                "prod_design":"PRODUCT DESIGNING",
+                "shorting":"SHORtING"
+            }
+
+        },
+
+        "section_label4":"TRAINING AND CAPACITY BUILDING",
+        "training_cb":{
+            "prior_training_business_skill":"Do you have Prior Training in Business Skill Module",
+            "need_training_business_skill":"Do you need training in Business Skill Module",
+            "prior_training_prod_packaging":"Do you have Prior training in Product Packaging",
+            "need_training_prod_packaging":"Do you need training in Product Packaging",
+            "availed_any_training":"Have you availed any training related to business subject matter",
+            "need_any_training_label":"ANY OTHER TRAININGS REQUIRED"
+
+        }
+   
+}

@@ -17,7 +17,12 @@ import { initialValues } from "@/components/RegistrationForm/formikConfig";
 import { validationSchema } from "@/components/RegistrationForm/schema";
 
 import { useFormik } from "formik";
+
+import { useTranslation } from "react-i18next";
+
 export default function Home() {
+  const { t, i18n } = useTranslation();
+
   async function sendDataToServer(values) {
     try {
       let res = await fetch("/api/data", {
@@ -50,14 +55,33 @@ export default function Home() {
     <main className={styles["wrapper"]}>
       <Container>
         <section className={styles["wrapper_form"]}>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <div className="px-4">
+              <div className="py-2">
+                <label>Choose Language</label>
+              </div>
+              <div>
+                <select
+                  value={i18n.language}
+                  onChange={(e) => {
+                    let val = e.target.value;
+                    i18n.changeLanguage(val);
+                  }}
+                >
+                  <option value="en">ENGLISH</option>
+                  <option value="hi">HINDI</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <Form>
             <div>
-              <FormSectionHeader name="GENERAL INFORMATION" />
+              <FormSectionHeader name={t("section_label1")} />
             </div>
             <section className="px-3">
               <Row className="py-3 ">
                 <Form.Group as={Col} md="3" className="my-3">
-                  <Form.Label>Type of Respondent/Beneficiary</Form.Label>
+                  <Form.Label>{t("general_information.type")}</Form.Label>
                   <Form.Select
                     name={`general_information.["type_of_respondent"]`}
                     {...parentFormik.getFieldProps(
@@ -71,7 +95,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="4" className="my-3">
-                  <Form.Label>Name of the Respondent</Form.Label>
+                  <Form.Label>{t("general_information.name")}</Form.Label>
                   <Form.Control
                     name={`general_information.["name_of_respondent"]`}
                     {...parentFormik.getFieldProps(
@@ -80,7 +104,7 @@ export default function Home() {
                   />
                 </Form.Group>
                 <Form.Group as={Col} md="4" className="my-3">
-                  <Form.Label>Date of Firm/Business Registration</Form.Label>
+                  <Form.Label>{t("general_information.date")}</Form.Label>
                   <Form.Control
                     type="date"
                     name={`general_information.["date_of_registration"]`}
@@ -93,7 +117,7 @@ export default function Home() {
 
               <Row>
                 <Form.Group as={Col} md="3" className="my-3">
-                  <Form.Label>Name of the linked SHG</Form.Label>
+                  <Form.Label>{t("general_information.shg")}</Form.Label>
                   <Form.Control
                     name={`general_information.["linked_shg"]`}
                     {...parentFormik.getFieldProps(
@@ -103,7 +127,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="3" className="my-3">
-                  <Form.Label>Name of the linked VO</Form.Label>
+                  <Form.Label>{t("general_information.vo")}</Form.Label>
                   <Form.Control
                     name={`general_information.["linked_VO"]`}
                     {...parentFormik.getFieldProps(
@@ -113,7 +137,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="3" className="my-3">
-                  <Form.Label>Name of the CLF</Form.Label>
+                  <Form.Label>{t("general_information.clf")}</Form.Label>
                   <Form.Control
                     name={`general_information.["clf_name"]`}
                     {...parentFormik.getFieldProps(
@@ -123,7 +147,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="3" className="my-3">
-                  <Form.Label>Name of the PG / CLF</Form.Label>
+                  <Form.Label>{t("general_information.pg_clf")}</Form.Label>
                   <Form.Control
                     name={`general_information.["pg_name"]`}
                     {...parentFormik.getFieldProps(
@@ -135,7 +159,7 @@ export default function Home() {
 
               <Row>
                 <Form.Group as={Col} md="3" className="my-3">
-                  <Form.Label>Contact Number</Form.Label>
+                  <Form.Label>{t("general_information.contact")}</Form.Label>
                   <Form.Control
                     name={`general_information.["contact_details"]["contact_number"]`}
                     {...parentFormik.getFieldProps(
@@ -145,7 +169,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="3" className="my-3">
-                  <Form.Label>Alternate Number</Form.Label>
+                  <Form.Label>{t("general_information.alt_number")}</Form.Label>
                   <Form.Control
                     name={`general_information.["contact_details"]["alternate_number"]`}
                     {...parentFormik.getFieldProps(
@@ -155,7 +179,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="5" className="my-3">
-                  <Form.Label>Email Address (if available)</Form.Label>
+                  <Form.Label>{t("general_information.email")}</Form.Label>
                   <Form.Control
                     name={`general_information.["contact_details"]["email"]`}
                     {...parentFormik.getFieldProps(
@@ -167,7 +191,7 @@ export default function Home() {
 
               <Row>
                 <Form.Group as={Col} md="3" className="my-3">
-                  <Form.Label>Division</Form.Label>
+                  <Form.Label>{t("general_information.division")}</Form.Label>
                   <Form.Select
                     name={`general_information.["location_details"]["division"]`}
                     {...parentFormik.getFieldProps(
@@ -184,7 +208,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="3" className="my-3">
-                  <Form.Label>District</Form.Label>
+                  <Form.Label>{t("general_information.district")}</Form.Label>
                   <Form.Select
                     name={`general_information.["location_details"]["district"]`}
                     {...parentFormik.getFieldProps(
@@ -229,7 +253,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="3" className="my-3">
-                  <Form.Label>Block</Form.Label>
+                  <Form.Label>{t("general_information.block")}</Form.Label>
                   <Form.Select
                     name={`general_information.["location_details"]["block"]`}
                     {...parentFormik.getFieldProps(
@@ -242,7 +266,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="12" className="my-3">
-                  <Form.Label>Complete Address</Form.Label>
+                  <Form.Label>{t("general_information.address")}</Form.Label>
                   <Form.Control
                     as="textarea"
                     name={`general_information.["location_details"]["complete_address"]`}
@@ -255,13 +279,13 @@ export default function Home() {
             </section>
 
             <div>
-              <FormSectionHeader name="VALUE ADDITION OF BUSINESS" />
+              <FormSectionHeader name={t("section_label2")} />
             </div>
 
             <section className="px-3">
               <Row className="mt-3">
                 <Form.Group as={Col} md="4" className="my-3">
-                  <Form.Label>Business Registration Status</Form.Label>
+                  <Form.Label>{t("val_add.status")}</Form.Label>
                   <Form.Select
                     name={`value_addition_information.["business_registration_status"]`}
                     {...parentFormik.getFieldProps(
@@ -275,7 +299,7 @@ export default function Home() {
                   </Form.Select>
                 </Form.Group>
                 <Form.Group as={Col} md="4" className="my-3">
-                  <Form.Label>Business Registration Type</Form.Label>
+                  <Form.Label>{t("val_add.type")}</Form.Label>
                   <Form.Select
                     name={`value_addition_information.["business_registration_type"]`}
                     {...parentFormik.getFieldProps(
@@ -290,9 +314,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="4" className="my-3">
-                  <Form.Label>
-                    Business Registration Date (if applicable)
-                  </Form.Label>
+                  <Form.Label>{t("val_add.date")}</Form.Label>
                   <Form.Control
                     type="date"
                     name={`value_addition_information.["business_registration_date"]`}
@@ -305,9 +327,7 @@ export default function Home() {
 
               <Row className="mt-2">
                 <Form.Group as={Col} md="4" className="my-3">
-                  <Form.Label>
-                    No. of Full Time Employees (as on date)
-                  </Form.Label>
+                  <Form.Label>{t("val_add.full_time_emp")}</Form.Label>
                   <Form.Control
                     type="number"
                     name={`value_addition_information.["full_time_employees"]`}
@@ -318,9 +338,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="4" className="my-3">
-                  <Form.Label>
-                    No. of Part Time Employees (as on date)
-                  </Form.Label>
+                  <Form.Label>{t("val_add.part_time_emp")}</Form.Label>
                   <Form.Control
                     type="number"
                     name={`value_addition_information.["part_time_employees"]`}
@@ -331,19 +349,17 @@ export default function Home() {
                 </Form.Group>
               </Row>
 
-              <FormSectionSubHeader name="BUSINESS CERTIFICATES (AVAILABLE / REQUIRED)" />
+              <FormSectionSubHeader name={t("val_add.business_cert_label")} />
 
               <Row>
                 <CertificateSection parentFormik={parentFormik} />
               </Row>
 
-              <FormSectionSubHeader name="SALES INFORMATION" />
+              <FormSectionSubHeader name={t("val_add.sales_info_label")} />
 
               <Row className="mt-3">
                 <Form.Group as={Col} md="6">
-                  <Form.Label>
-                    Total sales of FY 2022-2023 (including all sales channels)
-                  </Form.Label>
+                  <Form.Label>{t("val_add.total_sales_fy")} </Form.Label>
                   <Form.Control
                     placeholder=""
                     type="number"
@@ -356,7 +372,7 @@ export default function Home() {
 
                 <Form.Group as={Col} md="6">
                   <Form.Label>
-                    Total sales in last quater (FY 1st Quater)
+                    {t("val_add.total_sales_last_quater")}
                   </Form.Label>
                   <Form.Control
                     placeholder=""
@@ -369,19 +385,19 @@ export default function Home() {
                 </Form.Group>
               </Row>
 
-              <FormSectionSubHeader name="TOP SKU INFORMATION" />
+              <FormSectionSubHeader name={t("val_add.top_sku_info")} />
 
               <SKUSection parentFormik={parentFormik} />
             </section>
 
             <div className="mt-4">
-              <FormSectionHeader name="PRODUCT DEVELOPMENT STATUS" />
+              <FormSectionHeader name={t("section_label3")} />
             </div>
 
             <section className="px-3 mt-3">
               <Row>
                 <Form.Group as={Col} md="6" className="mt-3">
-                  <Form.Label>Brand Name of Product (if any)</Form.Label>
+                  <Form.Label>{t("prod_dev.brand_name")}</Form.Label>
                   <Form.Select
                     name={`product_development_status.["brand_name_exists"]`}
                     {...parentFormik.getFieldProps(
@@ -395,7 +411,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="6" className="mt-3">
-                  <Form.Label>If YES, specify the Brand Name</Form.Label>
+                  <Form.Label>{t("prod_dev.specify_brand_name")}</Form.Label>
                   <Form.Control
                     name={`product_development_status.["brand_name"]`}
                     {...parentFormik.getFieldProps(
@@ -405,7 +421,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="6" className="mt-3">
-                  <Form.Label>Logos for the Business (if any)</Form.Label>
+                  <Form.Label>{t("prod_dev.logo")}</Form.Label>
                   <Form.Select
                     name={`product_development_status.["logo_exists"]`}
                     {...parentFormik.getFieldProps(
@@ -419,9 +435,7 @@ export default function Home() {
                 </Form.Group>
 
                 <Form.Group as={Col} md="6" className="mt-3">
-                  <Form.Label>
-                    Need Support for Logo creation/development
-                  </Form.Label>
+                  <Form.Label>{t("prod_dev.support_logo_dev")}</Form.Label>
                   <Form.Select
                     name={`product_development_status.["logo_support_needed"]`}
                     {...parentFormik.getFieldProps(
@@ -435,51 +449,55 @@ export default function Home() {
                 </Form.Group>
               </Row>
 
-              <FormSectionSubHeader name="SUPPORT REQUIRED FOR PRODUCT DEVELOPMENT" />
+              <FormSectionSubHeader
+                name={t("prod_dev.support_req_prod_label")}
+              />
               <ProductDevelopmentSection parentFormik={parentFormik} />
             </section>
 
             <div className="mt-4">
-              <FormSectionHeader name="TRAINING AND CAPACITY BUILDING" />
+              <FormSectionHeader name={t("section_label4")} />
             </div>
 
             <section className="px-3 mt-3">
               <SpecifySelect
                 parentFormik={parentFormik}
                 formKey="prior_exp_business_skill_module"
-                drop_label="Do you have Prior Training in Business Skill Module"
+                drop_label={t("training_cb.prior_training_business_skill")}
                 specify_label="Specify the Prior training you had in Business Skill"
               />
 
               <SpecifySelect
                 parentFormik={parentFormik}
                 formKey="training_needed_business_skill"
-                drop_label="Do you need training in Business Skill Module"
+                drop_label={t("training_cb.need_training_business_skill")}
                 specify_label="Specify the trainig "
               />
 
               <SpecifySelect
                 formKey="prior_exp_product_packaging_module"
                 parentFormik={parentFormik}
-                drop_label="Do you have Prior training in Product Packaging"
+                drop_label={t("training_cb.prior_training_prod_packaging")}
                 specify_label="Specify the Prior training you had in Product Packaging"
               />
 
               <SpecifySelect
                 formKey="training_needed_product_packaging"
                 parentFormik={parentFormik}
-                drop_label="Do you need training in Product Packaging"
+                drop_label={t("training_cb.need_training_prod_packaging")}
                 specify_label="Specify the trainig you need"
               />
 
               <SpecifySelect
                 formKey="training_availed_on_business_subject_matter"
                 parentFormik={parentFormik}
-                drop_label="Have you availed any training related to business subject matter"
+                drop_label={t("training_cb.availed_any_training")}
                 specify_label="Specify the trainig you had"
               />
 
-              <FormSectionSubHeader name="ANY OTHER TRAININGS REQUIRED" />
+              <FormSectionSubHeader
+                name={t("training_cb.need_any_training_label")}
+              />
 
               <div className="mt-3">
                 <TrainingSection parentFormik={parentFormik} />
